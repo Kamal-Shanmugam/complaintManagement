@@ -1,0 +1,29 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Complaint;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Complaint>
+ */
+class ComplaintFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'customer_name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'subject' => fake()->sentence(4),
+            'description' => fake()->paragraph(),
+            'priority' => fake()->randomElement(['Low', 'Medium', 'High']),
+            'status' => fake()->randomElement(['Open', 'In Progress', 'Resolved']),
+        ];
+    }
+}
